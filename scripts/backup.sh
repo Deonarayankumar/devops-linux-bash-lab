@@ -17,7 +17,7 @@ EOF
 
 log() { printf '[%s] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*"; }
 
-# prune_old_backups() {
+prune_old_backups() {
   local dest="$1" days="$2"
   find "$dest" -maxdepth 1 -type f -name '*.tar.gz' -mtime +"$days" -print -delete
 }
@@ -41,7 +41,7 @@ main() {
 
   [[ -d "$src" ]] || { log "Source not found: $src"; exit 1; }
   create_backup "$src" "$dest"
-  # prune_old_backups "$dest" "$retention"
+  prune_old_backups "$dest" "$retention"
   log "Retention prune complete (>${retention} days)"
 }
 

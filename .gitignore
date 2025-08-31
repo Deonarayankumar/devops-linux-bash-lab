@@ -1,0 +1,16 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Test artifacts
+*.log
+/tmp/
+test-results/
+
+# Backup output
+backups/
+*.tar.gz

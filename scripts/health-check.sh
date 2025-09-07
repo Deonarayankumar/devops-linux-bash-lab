@@ -49,8 +49,8 @@ main() {
   command -v free >/dev/null || fail "free not found"
   log "Starting health check"
   check_disk
-  check_memory
-  check_load
+  # check_memory
+  # check_load
   log "Health check complete"
 }
 

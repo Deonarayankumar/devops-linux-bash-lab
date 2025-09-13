@@ -46,3 +46,29 @@ bats tests/test_health_check.bats
 pip install pytest
 pytest tests/test_shell_scripts.py -v
 ```
+
+## Testing
+
+See tests/ directory.
+
+## Key learnings
+
+1. **Defensive Bash** — `set -euo pipefail`, explicit usage(), and structured logging make scripts safer in production cron jobs.
+2. **Threshold-based alerts** — Separate "check" (health-check) from "alert" (disk-alert) scripts to avoid alert fatigue.
+3. **Retention policies** — Backups without pruning eventually become the incident; encode retention in the backup tool.
+4. **Log parsing with awk** — Apache combined format maps cleanly to awk fields; keep parsers stream-friendly for large files.
+5. **CI for shell** — ShellCheck in GitHub Actions catches quoting and portability issues before merge.
+6. **Dual test runners** — Bats for native shell behavior; pytest wrapper for teams standardizing on Python test harnesses.
+
+## Replaying commit history
+
+Use `commit_plan.json` to practice incremental git commits:
+
+```bash
+# Example: apply commits one at a time with a small helper script
+jq -r '.commits[].message' commit_plan.json
+```
+
+## License
+
+MIT — for educational use.

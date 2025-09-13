@@ -47,10 +47,6 @@ pip install pytest
 pytest tests/test_shell_scripts.py -v
 ```
 
-## Testing
-
-See tests/ directory.
-
 ## Key learnings
 
 1. **Defensive Bash** — `set -euo pipefail`, explicit usage(), and structured logging make scripts safer in production cron jobs.
